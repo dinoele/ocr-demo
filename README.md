@@ -2,6 +2,8 @@
 # Atalasoft DotImage OCR demo
 Demo application shows usage of OCR functionality that [DotImage](https://www.atalasoft.com/Products/DotImage) product provides. 
 
+![](https://atalasoft.visualstudio.com/_apis/public/build/definitions/789e0a22-6f04-4fac-91a5-ccc70df2a1f1/6/badge)
+
 ## Description
 
 TBD
