@@ -49,7 +49,8 @@
     <FxCopTargets>$(SolutionDir)..\..\Build\build.fxcop.Targets</FxCopTargets>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
-    <NuGetPackageImportStamp>4b0a8ce6</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TargetFrameworkVersionNumber>4.0</TargetFrameworkVersionNumber>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -88,6 +89,10 @@
     </Reference>
     <Reference Include="Atalasoft.dotImage.Ocr, Version=10.7.0.3297, Culture=neutral, PublicKeyToken=2b02b46f7326f73b, processorArchitecture=x86">
       <HintPath>..\packages\Atalasoft.dotImage.Ocr.x86.10.7.0.63297\lib\net40\Atalasoft.dotImage.Ocr.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Ocr.Abbyy, Version=10.7.0.3297, Culture=neutral, PublicKeyToken=2b02b46f7326f73b, processorArchitecture=x86">
+      <HintPath>..\packages\Atalasoft.dotImage.Ocr.Abbyy.x86.10.7.0.63297\lib\net40\Atalasoft.dotImage.Ocr.Abbyy.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Atalasoft.dotImage.Ocr.GlyphReader, Version=10.7.0.3297, Culture=neutral, PublicKeyToken=2b02b46f7326f73b, processorArchitecture=x86">
@@ -190,7 +195,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Condition="Exists('$(StyleCopTargets)')" Project="$(StyleCopTargets)" />
@@ -222,6 +229,7 @@
     <Error Condition="!Exists('..\packages\Atalasoft.dotImage.Pdf.x86.10.7.0.63297\build\Atalasoft.dotImage.Pdf.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Atalasoft.dotImage.Pdf.x86.10.7.0.63297\build\Atalasoft.dotImage.Pdf.x86.targets'))" />
     <Error Condition="!Exists('..\packages\Atalasoft.dotImage.PdfDoc.Bridge.x86.10.7.0.63297\build\Atalasoft.dotImage.PdfDoc.Bridge.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Atalasoft.dotImage.PdfDoc.Bridge.x86.10.7.0.63297\build\Atalasoft.dotImage.PdfDoc.Bridge.x86.targets'))" />
     <Error Condition="!Exists('..\packages\Atalasoft.dotImage.WinControls.x86.10.7.0.63297\build\Atalasoft.dotImage.WinControls.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Atalasoft.dotImage.WinControls.x86.10.7.0.63297\build\Atalasoft.dotImage.WinControls.x86.targets'))" />
+    <Error Condition="!Exists('..\packages\Atalasoft.dotImage.Ocr.Abbyy.x86.10.7.0.63297\build\Atalasoft.dotImage.Ocr.Abbyy.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Atalasoft.dotImage.Ocr.Abbyy.x86.10.7.0.63297\build\Atalasoft.dotImage.Ocr.Abbyy.x86.targets'))" />
   </Target>
   <Import Project="..\packages\Atalasoft.dotImage.Lib.x86.10.7.0.63297\build\Atalasoft.dotImage.Lib.x86.targets" Condition="Exists('..\packages\Atalasoft.dotImage.Lib.x86.10.7.0.63297\build\Atalasoft.dotImage.Lib.x86.targets')" />
   <Import Project="..\packages\Atalasoft.dotImage.x86.10.7.0.63297\build\Atalasoft.dotImage.x86.targets" Condition="Exists('..\packages\Atalasoft.dotImage.x86.10.7.0.63297\build\Atalasoft.dotImage.x86.targets')" />
@@ -237,4 +245,5 @@
   <Import Project="..\packages\Atalasoft.dotImage.Pdf.x86.10.7.0.63297\build\Atalasoft.dotImage.Pdf.x86.targets" Condition="Exists('..\packages\Atalasoft.dotImage.Pdf.x86.10.7.0.63297\build\Atalasoft.dotImage.Pdf.x86.targets')" />
   <Import Project="..\packages\Atalasoft.dotImage.PdfDoc.Bridge.x86.10.7.0.63297\build\Atalasoft.dotImage.PdfDoc.Bridge.x86.targets" Condition="Exists('..\packages\Atalasoft.dotImage.PdfDoc.Bridge.x86.10.7.0.63297\build\Atalasoft.dotImage.PdfDoc.Bridge.x86.targets')" />
   <Import Project="..\packages\Atalasoft.dotImage.WinControls.x86.10.7.0.63297\build\Atalasoft.dotImage.WinControls.x86.targets" Condition="Exists('..\packages\Atalasoft.dotImage.WinControls.x86.10.7.0.63297\build\Atalasoft.dotImage.WinControls.x86.targets')" />
+  <Import Project="..\packages\Atalasoft.dotImage.Ocr.Abbyy.x86.10.7.0.63297\build\Atalasoft.dotImage.Ocr.Abbyy.x86.targets" Condition="Exists('..\packages\Atalasoft.dotImage.Ocr.Abbyy.x86.10.7.0.63297\build\Atalasoft.dotImage.Ocr.Abbyy.x86.targets')" />
 </Project>

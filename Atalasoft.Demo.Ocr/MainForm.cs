@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using Atalasoft.Imaging;
 using Atalasoft.Imaging.Codec;
 using Atalasoft.Ocr;
+using Atalasoft.Ocr.Abbyy;
 using Atalasoft.Ocr.GlyphReader;
 using Atalasoft.Ocr.Tesseract;
 using Microsoft.Win32;
@@ -40,6 +41,7 @@ namespace Atalasoft.Demo.Ocr
         private OcrEngine _tesseract;       // Tesseract ditto
         private OcrEngine _tesseract3;      // This is the new (as of 10.4.1) Tesseract 3 engine
         private OcrEngine _glyphReader;     // GlyphReader likewise
+        private OcrEngine _abbyy;           // ABBYY FineReader
 
         private bool _saveToFile;
 
@@ -411,11 +413,35 @@ namespace Atalasoft.Demo.Ocr
             }
         }
 
+        private void OnMenuAbbyyClick(object sender, EventArgs e)
+        {
+            try
+            {
+                // TODO: you may want to change the location of ABBYY OCR resource files below
+                var currentFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);               
+                var loader = new AbbyyLoader(Path.Combine(currentFolder, "Abbyy"));
+
+                if (loader.Loaded)
+                {
+                    SelectAbbyyEngine();
+                }
+                else
+                {
+                    InfoBox("Unable to load ABBYY OCR engine resource files. Make sure that you downloaded the engine as described in KB article: http://www.atalasoft.com/KB/Article.aspx?id=10432");
+                }
+            }
+            catch (AtalasoftLicenseException ex)
+            {
+                LicenseCheckFailure("Using ABBYY OCR requires a DotImage OCR License.", ex.Message);
+            }
+        }
+
         private void UpdateMenusForEngine()
         {
             _menuGlyphReaderEngine.Checked = (_engine == _glyphReader);
             _menuTesseract.Checked = (_engine == _tesseract);
             _menuTesseract3.Checked = (_engine == _tesseract3);
+            _menuAbbyy.Checked = (_engine == _abbyy);
             // Fill in the menu of supported recognition languages/cultures:
             CreateLanguageMenu();
             // Adds the list of supported output formats to the 'Action' menu.
@@ -521,6 +547,20 @@ namespace Atalasoft.Demo.Ocr
             if (_tesseract3 != null)
             {
                 _engine = _tesseract3;
+                UpdateMenusForEngine();
+            }
+        }
+
+        private void SelectAbbyyEngine()
+        {
+            if (_abbyy == null)
+            {
+                _abbyy = new AbbyyEngine();
+                InitializeEngine(_abbyy);
+            }
+            if (_abbyy != null)
+            {
+                _engine = _abbyy;
                 UpdateMenusForEngine();
             }
         }
