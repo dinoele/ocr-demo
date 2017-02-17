@@ -6,7 +6,11 @@ Demo application shows usage of OCR functionality that [DotImage](https://www.at
 
 ## Description
 
-TBD
+OCR Demo demonstrates how to use OCR engines supported by DotImage:
+ 
+ - ABBYY
+ - GlyphReader
+ - Tesseract 2/3
 
 ## Licensing
 To run the demo locally, you need to have DotImage license. There are various way to acquire the license:
