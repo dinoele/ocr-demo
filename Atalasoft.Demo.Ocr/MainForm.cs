@@ -418,7 +418,7 @@ namespace Atalasoft.Demo.Ocr
             try
             {
                 // TODO: you may want to change the location of ABBYY OCR resource files below
-                var currentFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);               
+                var currentFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);               
                 var loader = new AbbyyLoader(Path.Combine(currentFolder, "Abbyy"));
 
                 if (loader.Loaded)
@@ -462,9 +462,11 @@ namespace Atalasoft.Demo.Ocr
             // Create menu
             EventHandler ev = OnLanguageClick;
             _menuLanguage.MenuItems.Clear();
+            var itemsInColumn = 1;
             foreach (var name in names)
             {
                 var mi = new MenuItem(name, ev);
+                mi.BarBreak = itemsInColumn++ % 40 == 0;
                 _menuLanguage.MenuItems.Add(mi);
                 if (_engine.RecognitionCulture.DisplayName == name)
                     mi.Checked = true;
