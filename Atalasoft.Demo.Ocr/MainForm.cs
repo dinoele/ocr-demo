@@ -462,9 +462,11 @@ namespace Atalasoft.Demo.Ocr
             // Create menu
             EventHandler ev = OnLanguageClick;
             _menuLanguage.MenuItems.Clear();
+            var itemsInColumn = 1;
             foreach (var name in names)
             {
                 var mi = new MenuItem(name, ev);
+                mi.BarBreak = itemsInColumn++ % 40 == 0;
                 _menuLanguage.MenuItems.Add(mi);
                 if (_engine.RecognitionCulture.DisplayName == name)
                     mi.Checked = true;
