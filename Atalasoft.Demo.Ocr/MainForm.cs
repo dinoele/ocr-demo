@@ -418,7 +418,7 @@ namespace Atalasoft.Demo.Ocr
             try
             {
                 // TODO: you may want to change the location of ABBYY OCR resource files below
-                var currentFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);               
+                var currentFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);               
                 var loader = new AbbyyLoader(Path.Combine(currentFolder, "Abbyy"));
 
                 if (loader.Loaded)
